@@ -1,5 +1,5 @@
 {
-  "name": "vision-camera-mrz-scanner",
+  "name": "diva-mobile-vision-camera-mrz-scanner",
   "version": "0.3.1",
   "description": "VisionCamera Frame Processor Plugin to detect and read MRZ data from passports using MLKit Text Recognition.",
   "main": "lib/commonjs/index",
@@ -52,13 +52,13 @@
     "scanner",
     "ocr"
   ],
-  "repository": "https://github.com/mat2718/vision-camera-mrz-scanner",
+  "repository": "https://github.com/Deatsilence/diva-mobile-vision-camera-mrz-scanner",
   "author": "Matthew Terry <matthewterry68.mt@gmail.com> (https://github.com/mat2718)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/mat2718/vision-camera-mrz-scanner/issues"
   },
-  "homepage": "https://github.com/mat2718/vision-camera-mrz-scanner#readme",
+  "homepage": "https://github.com/Deatsilence/diva-mobile-vision-camera-mrz-scanner#readme",
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"

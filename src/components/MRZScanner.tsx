@@ -167,7 +167,7 @@ const MRZScanner: FC<PropsWithChildren<MRZScannerProps>> = ({
   const styles = StyleSheet.create({
     feedbackContainer: {
       position: 'absolute',
-      top: 55,
+      top: '60%',
       alignItems: 'flex-start',
       backgroundColor: 'rgba(200,200,200,0.8)',
       width: '100%',
