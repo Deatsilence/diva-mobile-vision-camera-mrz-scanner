@@ -1,6 +1,9 @@
 import React, {FC, PropsWithChildren, useEffect, useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {MRZCamera, MRZScannerProps} from 'vision-camera-mrz-scanner';
+import {
+  MRZCamera,
+  MRZScannerProps,
+} from 'diva-mobile-vision-camera-mrz-scanner';
 
 import type {MRZProperties} from '../types/mrzProperties';
 import {parseMRZ} from '../util/mrzParser';
