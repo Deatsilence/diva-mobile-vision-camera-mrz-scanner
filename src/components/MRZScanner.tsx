@@ -170,9 +170,9 @@ const MRZScanner: FC<PropsWithChildren<MRZScannerProps>> = ({
 
   const styles = StyleSheet.create({
     feedbackContainer: {
+      height: 60,
       position: 'absolute',
       top: '60%',
-      alignItems: 'flex-start',
       backgroundColor: 'rgba(200,200,200,0.8)',
       width: '100%',
       textAlignVertical: 'center',
@@ -180,13 +180,16 @@ const MRZScanner: FC<PropsWithChildren<MRZScannerProps>> = ({
     feedbackText: {
       color: 'white',
       fontSize: 10,
-      textAlign: 'center',
+      justifyContent: 'center',
       width: '33.3%',
-      paddingTop: 10,
       textAlignVertical: 'center',
-      height: '100%',
     },
-    flexRow: {flexDirection: 'row'},
+    flexRow: {
+      flexDirection: 'row',
+      alignSelf: 'center',
+      height: 30,
+      justifyContent: 'flex-start',
+    },
     givenNamesQAList: {
       color: statusCheck(givenNamesQAList.length),
     },
