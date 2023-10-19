@@ -1,8 +1,8 @@
 import i18next from 'i18next';
 import {initReactI18next} from 'react-i18next';
-import tr from './locales/tr.json';
-import en from './locales/en.json';
-import de from './locales/de.json';
+import tr from '../locales/tr.json';
+import en from '../locales/en.json';
+import de from '../locales/de.json';
 
 export const languageResources = {
   tr: {translation: tr},
