@@ -8,6 +8,13 @@ import {
 import type {MRZProperties} from '../types/mrzProperties';
 import {parseMRZ} from '../util/mrzParser';
 
+import i18next from 'i18next-custom';
+import {useTranslation} from 'react-i18next';
+
+export const changeLanguage = (language: string) => {
+  i18next.changeLanguage(language);
+};
+
 const MRZScanner: FC<PropsWithChildren<MRZScannerProps>> = ({
   style,
   skipButtonEnabled,
@@ -26,10 +33,13 @@ const MRZScanner: FC<PropsWithChildren<MRZScannerProps>> = ({
   mrzFeedbackContainer,
   mrzFeedbackTextStyle,
   isActiveCamera,
+  language,
 }) => {
   //*****************************************************************************************
   //  setting up the state
   //*****************************************************************************************
+
+  const {t} = useTranslation();
 
   const numQAChecks = numberOfQAChecks ?? 3;
   const [scanSuccess, setScanSuccess] = useState(false);
@@ -63,9 +73,10 @@ const MRZScanner: FC<PropsWithChildren<MRZScannerProps>> = ({
 
   useEffect(() => {
     return () => {
+      changeLanguage(language ?? 'en');
       setIsActive(false);
     };
-  }, []);
+  }, [language]);
 
   /**
    * If all elements in list match element, add the new element.
@@ -192,34 +203,12 @@ const MRZScanner: FC<PropsWithChildren<MRZScannerProps>> = ({
     lastNamesQAList: {
       color: statusCheck(lastNamesQAList.length),
     },
-    dobQAList: {
-      color: statusCheck(dobQAList.length),
-    },
+
     nationalityQAList: {
       color: statusCheck(nationalityQAList.length),
     },
     idNumberQAList: {
       color: statusCheck(idNumberQAList.length),
-    },
-    issuingCountryQAList: {
-      color: statusCheck(issuingCountryQAList.length),
-    },
-    docExpirationDateQAList: {
-      color: statusCheck(docExpirationDateQAList.length),
-    },
-    additionalInformationQAList: {
-      color: statusCheck(additionalInformationQAList.length),
-    },
-    docMRZQAList: {
-      color: statusCheck(docMRZQAList.length, 1),
-    },
-    genderQAList: {
-      color: statusCheck(genderQAList.length),
-      paddingBottom: 10,
-    },
-    docTypeQAList: {
-      color: statusCheck(docTypeQAList.length),
-      paddingBottom: 10,
     },
   });
 
@@ -260,7 +249,7 @@ const MRZScanner: FC<PropsWithChildren<MRZScannerProps>> = ({
                 styles.givenNamesQAList,
                 mrzFeedbackTextStyle,
               ]}>
-              {`Given name ${givenNamesQAList.length} / ${numQAChecks}`}
+              {`${t('GIVEN_NAME')} ${givenNamesQAList.length} / ${numQAChecks}`}
             </Text>
             <Text
               style={[
@@ -268,15 +257,7 @@ const MRZScanner: FC<PropsWithChildren<MRZScannerProps>> = ({
                 styles.lastNamesQAList,
                 mrzFeedbackTextStyle,
               ]}>
-              {`Last name ${lastNamesQAList.length} / ${numQAChecks}`}
-            </Text>
-            <Text
-              style={[
-                styles.feedbackText,
-                styles.dobQAList,
-                mrzFeedbackTextStyle,
-              ]}>
-              {`DOB ${dobQAList.length} / ${numQAChecks}`}
+              {`${t('LAST_NAME')} ${lastNamesQAList.length} / ${numQAChecks}`}
             </Text>
           </View>
           <View style={styles.flexRow}>
@@ -286,7 +267,9 @@ const MRZScanner: FC<PropsWithChildren<MRZScannerProps>> = ({
                 styles.nationalityQAList,
                 mrzFeedbackTextStyle,
               ]}>
-              {`Nationality ${nationalityQAList.length} / ${numQAChecks}`}
+              {`${t('NATIONALITY')} ${
+                nationalityQAList.length
+              } / ${numQAChecks}`}
             </Text>
             <Text
               style={[
@@ -294,59 +277,9 @@ const MRZScanner: FC<PropsWithChildren<MRZScannerProps>> = ({
                 styles.idNumberQAList,
                 mrzFeedbackTextStyle,
               ]}>
-              {`ID Number ${idNumberQAList.length} / ${numQAChecks}`}
-            </Text>
-            <Text
-              style={[
-                styles.feedbackText,
-                styles.issuingCountryQAList,
-                mrzFeedbackTextStyle,
-              ]}>
-              {`Issuing Country ${issuingCountryQAList.length} / ${numQAChecks}`}
-            </Text>
-          </View>
-          <View style={styles.flexRow}>
-            <Text
-              style={[
-                styles.feedbackText,
-                styles.docExpirationDateQAList,
-                mrzFeedbackTextStyle,
-              ]}>
-              {`Expiration Date ${docExpirationDateQAList.length} / ${numQAChecks}`}
-            </Text>
-            <Text
-              style={[
-                styles.feedbackText,
-                styles.additionalInformationQAList,
-                mrzFeedbackTextStyle,
-              ]}>
-              {`Additional Info ${additionalInformationQAList.length} / ${numQAChecks}`}
-            </Text>
-            <Text
-              style={[
-                styles.feedbackText,
-                styles.docMRZQAList,
-                mrzFeedbackTextStyle,
-              ]}>
-              {`DocMRZ ${docMRZQAList.length} / ${1}`}
-            </Text>
-          </View>
-          <View style={styles.flexRow}>
-            <Text
-              style={[
-                styles.feedbackText,
-                styles.genderQAList,
-                mrzFeedbackTextStyle,
-              ]}>
-              {`Gender ${genderQAList.length} / ${numQAChecks}`}
-            </Text>
-            <Text
-              style={[
-                styles.feedbackText,
-                styles.docTypeQAList,
-                mrzFeedbackTextStyle,
-              ]}>
-              {`DocType ${docTypeQAList.length} / ${numQAChecks}`}
+              {`${t('PASSPORT_NUMBER')} ${
+                idNumberQAList.length
+              } / ${numQAChecks}`}
             </Text>
           </View>
         </View>

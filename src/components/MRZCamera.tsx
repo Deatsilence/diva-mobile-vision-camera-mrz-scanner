@@ -36,6 +36,9 @@ import {
   sortFormatsByResolution,
 } from 'diva-mobile-vision-camera-mrz-scanner';
 
+import i18next from 'i18next-custom';
+import {useTranslation} from 'react-i18next';
+
 const MRZCamera: FC<PropsWithChildren<MRZCameraProps>> = ({
   enableBoundingBox,
   boundingBoxStyle,
@@ -52,10 +55,14 @@ const MRZCamera: FC<PropsWithChildren<MRZCameraProps>> = ({
   skipButtonText,
   cameraDirection,
   isActiveCamera,
+  language,
 }) => {
   //*****************************************************************************************
   //  setting up the state
   //*****************************************************************************************
+
+  const {t} = useTranslation();
+
   // Permissions
   const [hasPermission, setHasPermission] = React.useState(false);
   // camera states
@@ -80,9 +87,10 @@ const MRZCamera: FC<PropsWithChildren<MRZCameraProps>> = ({
   /* A cleanup function that is called when the component is unmounted. */
   useEffect(() => {
     return () => {
+      i18next.changeLanguage(language ?? 'en');
       setIsActive(false);
     };
-  }, []);
+  }, [language]);
 
   // which format should we use
   const formats = useMemo(
@@ -131,9 +139,9 @@ const MRZCamera: FC<PropsWithChildren<MRZCameraProps>> = ({
         let updatedOCRElements: BoundingFrame[] = [];
         data.result.blocks.forEach(block => {
           if (block.frame.width / screenWidth < 0.8) {
-            setFeedbackText('Hold Still');
+            setFeedbackText(t('HOLD_STILL'));
           } else {
-            setFeedbackText('Scanning...');
+            setFeedbackText(t('SCANNING'));
           }
           updatedOCRElements.push({...block.frame});
         });
@@ -150,7 +158,7 @@ const MRZCamera: FC<PropsWithChildren<MRZCameraProps>> = ({
         }
       }
     },
-    [isActive, landscapeMode, onData, screenWidth],
+    [isActive, landscapeMode, onData, screenWidth, t],
   );
 
   /* Setting the format to the first format in the formats array. */
