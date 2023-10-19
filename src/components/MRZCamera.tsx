@@ -36,7 +36,7 @@ import {
   sortFormatsByResolution,
 } from 'diva-mobile-vision-camera-mrz-scanner';
 
-import i18next from '../../services/i18next';
+import i18next from '../services/i18next';
 import {useTranslation} from 'react-i18next';
 
 const MRZCamera: FC<PropsWithChildren<MRZCameraProps>> = ({

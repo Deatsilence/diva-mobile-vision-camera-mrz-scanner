@@ -8,7 +8,7 @@ import {
 import type {MRZProperties} from '../types/mrzProperties';
 import {parseMRZ} from '../util/mrzParser';
 
-import i18next from '../../services/i18next';
+import i18next from '../services/i18next';
 import {useTranslation} from 'react-i18next';
 
 export const changeLanguage = (language: string) => {
