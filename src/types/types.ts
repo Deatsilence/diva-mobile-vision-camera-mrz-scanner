@@ -52,7 +52,7 @@ export type MRZCameraProps = {
   scanSuccess?: boolean;
   cameraDirection?: 'front' | 'back'; // defaults to back
   isActiveCamera?: boolean;
-  language?: string;
+  languages?: string[];
 };
 
 export type MRZScannerProps = MRZCameraProps & {

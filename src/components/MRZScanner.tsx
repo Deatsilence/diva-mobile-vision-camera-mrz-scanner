@@ -8,13 +8,6 @@ import {
 import type {MRZProperties} from '../types/mrzProperties';
 import {parseMRZ} from '../util/mrzParser';
 
-import i18next from '../services/i18next';
-import {useTranslation} from 'react-i18next';
-
-export const changeLanguage = (language: string) => {
-  i18next.changeLanguage(language);
-};
-
 const MRZScanner: FC<PropsWithChildren<MRZScannerProps>> = ({
   style,
   skipButtonEnabled,
@@ -33,13 +26,11 @@ const MRZScanner: FC<PropsWithChildren<MRZScannerProps>> = ({
   mrzFeedbackContainer,
   mrzFeedbackTextStyle,
   isActiveCamera,
-  language,
+  languages,
 }) => {
   //*****************************************************************************************
   //  setting up the state
   //*****************************************************************************************
-
-  const {t} = useTranslation();
 
   const numQAChecks = numberOfQAChecks ?? 3;
   const [scanSuccess, setScanSuccess] = useState(false);
@@ -73,10 +64,9 @@ const MRZScanner: FC<PropsWithChildren<MRZScannerProps>> = ({
 
   useEffect(() => {
     return () => {
-      changeLanguage(language ?? 'en');
       setIsActive(false);
     };
-  }, [language]);
+  }, []);
 
   /**
    * If all elements in list match element, add the new element.
@@ -249,7 +239,9 @@ const MRZScanner: FC<PropsWithChildren<MRZScannerProps>> = ({
                 styles.givenNamesQAList,
                 mrzFeedbackTextStyle,
               ]}>
-              {`${t('GIVEN_NAME')} ${givenNamesQAList.length} / ${numQAChecks}`}
+              {`${(languages ?? [''])[0]}  ${
+                givenNamesQAList.length
+              } / ${numQAChecks}`}
             </Text>
             <Text
               style={[
@@ -257,7 +249,9 @@ const MRZScanner: FC<PropsWithChildren<MRZScannerProps>> = ({
                 styles.lastNamesQAList,
                 mrzFeedbackTextStyle,
               ]}>
-              {`${t('LAST_NAME')} ${lastNamesQAList.length} / ${numQAChecks}`}
+              {`${(languages ?? [''])[1]} ${
+                lastNamesQAList.length
+              } / ${numQAChecks}`}
             </Text>
           </View>
           <View style={styles.flexRow}>
@@ -267,7 +261,7 @@ const MRZScanner: FC<PropsWithChildren<MRZScannerProps>> = ({
                 styles.nationalityQAList,
                 mrzFeedbackTextStyle,
               ]}>
-              {`${t('NATIONALITY')} ${
+              {`${(languages ?? [''])[2]} ${
                 nationalityQAList.length
               } / ${numQAChecks}`}
             </Text>
@@ -277,7 +271,7 @@ const MRZScanner: FC<PropsWithChildren<MRZScannerProps>> = ({
                 styles.idNumberQAList,
                 mrzFeedbackTextStyle,
               ]}>
-              {`${t('PASSPORT_NUMBER')} ${
+              {`${(languages ?? [''])[3]} ${
                 idNumberQAList.length
               } / ${numQAChecks}`}
             </Text>
