@@ -222,6 +222,7 @@ const MRZScanner: FC<PropsWithChildren<MRZScannerProps>> = ({
             }
           }
         }}
+        languages={languages}
         scanSuccess={scanSuccess}
         skipButtonText={skipButtonText}
         style={[style ? style : StyleSheet.absoluteFill]}
