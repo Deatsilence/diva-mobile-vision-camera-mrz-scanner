@@ -234,7 +234,7 @@ const MRZScanner: FC<PropsWithChildren<MRZScannerProps>> = ({
         enableBoundingBox={enableBoundingBox}
         isActiveCamera={isActiveCamera ?? isActive} // if isActiveCamera is not defined, use the internal state
       />
-      {enableMRZFeedBack ? (
+      {enableMRZFeedBack && languages ? (
         <View style={[styles.feedbackContainer, mrzFeedbackContainer]}>
           <View style={styles.flexRow}>
             <Text
@@ -243,7 +243,7 @@ const MRZScanner: FC<PropsWithChildren<MRZScannerProps>> = ({
                 styles.givenNamesQAList,
                 mrzFeedbackTextStyle,
               ]}>
-              {`${(languages ?? [''])[0]}  ${
+              {`${languages[0]!.NAME}  ${
                 givenNamesQAList.length
               } / ${numQAChecks}`}
             </Text>
@@ -253,7 +253,7 @@ const MRZScanner: FC<PropsWithChildren<MRZScannerProps>> = ({
                 styles.lastNamesQAList,
                 mrzFeedbackTextStyle,
               ]}>
-              {`${(languages ?? [''])[1]} ${
+              {`${languages[0]!.LAST_NAME} ${
                 lastNamesQAList.length
               } / ${numQAChecks}`}
             </Text>
@@ -265,7 +265,7 @@ const MRZScanner: FC<PropsWithChildren<MRZScannerProps>> = ({
                 styles.nationalityQAList,
                 mrzFeedbackTextStyle,
               ]}>
-              {`${(languages ?? [''])[2]} ${
+              {`${languages[0]!.NATIONALITY} ${
                 nationalityQAList.length
               } / ${numQAChecks}`}
             </Text>
@@ -275,7 +275,7 @@ const MRZScanner: FC<PropsWithChildren<MRZScannerProps>> = ({
                 styles.idNumberQAList,
                 mrzFeedbackTextStyle,
               ]}>
-              {`${(languages ?? [''])[3]} ${
+              {`${languages[0]!.PASSPORT_NO} ${
                 idNumberQAList.length
               } / ${numQAChecks}`}
             </Text>

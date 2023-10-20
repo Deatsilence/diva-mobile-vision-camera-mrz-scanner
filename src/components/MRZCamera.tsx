@@ -128,14 +128,15 @@ const MRZCamera: FC<PropsWithChildren<MRZCameraProps>> = ({
         data &&
         data.result &&
         data.result.blocks &&
-        data.result.blocks.length > 0
+        data.result.blocks.length > 0 &&
+        languages
       ) {
         let updatedOCRElements: BoundingFrame[] = [];
         data.result.blocks.forEach(block => {
           if (block.frame.width / screenWidth < 0.8) {
-            setFeedbackText(`${(languages ?? [''])[4]}`);
+            setFeedbackText(`${languages[0]!.HOLD_STILL}`);
           } else {
-            setFeedbackText(`${(languages ?? [''])[5]}`);
+            setFeedbackText(`${languages[0]!.SCANNING}`);
           }
           updatedOCRElements.push({...block.frame});
         });
