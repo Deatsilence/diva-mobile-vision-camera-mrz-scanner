@@ -1,39 +1,32 @@
-import React, {
-  FC,
-  PropsWithChildren,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
+import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
+import type {FC, PropsWithChildren} from 'react';
 import {
   Button,
-  LayoutChangeEvent,
   PixelRatio,
-  StyleProp,
   StyleSheet,
   Text,
   TouchableOpacity,
   useWindowDimensions,
   View,
-  ViewStyle,
 } from 'react-native';
+import type {ViewStyle, StyleProp, LayoutChangeEvent} from 'react-native';
 import {runOnJS} from 'react-native-reanimated';
 import {
   Camera,
-  Frame,
   useCameraDevices,
   useFrameProcessor,
 } from 'react-native-vision-camera';
+import type {Frame} from 'react-native-vision-camera';
 import {
   boundingBoxAdjustToView,
+  scanMRZ,
+  sortFormatsByResolution,
+} from 'diva-mobile-vision-camera-mrz-scanner';
+import type {
   BoundingFrame,
   Dimensions,
   MRZCameraProps,
   MRZFrame,
-  scanMRZ,
-  sortFormatsByResolution,
 } from 'diva-mobile-vision-camera-mrz-scanner';
 
 const MRZCamera: FC<PropsWithChildren<MRZCameraProps>> = ({
