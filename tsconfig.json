@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "diva-mobile-vision-camera-mrz-scanner": ["./src/index"]
+      "diva-mobile-vision-camera-mrz-scanner": ["./index"]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
