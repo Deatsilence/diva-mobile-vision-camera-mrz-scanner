@@ -34,7 +34,7 @@ import {
   MRZFrame,
   scanMRZ,
   sortFormatsByResolution,
-} from 'diva-mobile-vision-camera-mrz-scanner';
+} from 'src/types';
 
 const MRZCamera: FC<PropsWithChildren<MRZCameraProps>> = ({
   enableBoundingBox,

@@ -5,8 +5,8 @@
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
   "types": "lib/typescript/index.d.ts",
-  "react-native": "diva-mobile-vision-camera-mrz-scanner",
-  "source": "diva-mobile-vision-camera-mrz-scanner",
+  "react-native": "src/types/index.d.ts",
+  "source": "src/types/index.d.ts",
   "files": [
     "src",
     "lib",

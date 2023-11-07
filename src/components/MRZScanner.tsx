@@ -3,7 +3,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import {
   MRZCamera,
   MRZScannerProps,
-} from 'diva-mobile-vision-camera-mrz-scanner';
+} from 'src/types';
 
 import type {MRZProperties} from '../types/mrzProperties';
 import {parseMRZ} from '../util/mrzParser';
