@@ -26,9 +26,9 @@
 // // wrapper.ts
 // export {default as scanMRZ} from './util/wrapper';
 
-import {default as MRZCamera} from '../components/MRZCamera';
-import {default as MRZScanner} from '../components/MRZScanner';
-import type {MRZProperties} from './mrzProperties';
+import {default as MRZCamera} from './components/MRZCamera';
+import {default as MRZScanner} from './components/MRZScanner';
+import type {MRZProperties} from './types/mrzProperties';
 import type {
   BoundingFrame,
   Dimensions,
@@ -43,12 +43,12 @@ import type {
   TextBlock,
   TextElement,
   TextLine,
-} from './types';
-import {boundingBoxAdjustToView} from '../util/boundingBoxAdjustToView';
+} from './types/types';
+import {boundingBoxAdjustToView} from './util/boundingBoxAdjustToView';
 // // types.ts
 // // resolutions.ts
-import {sortFormatsByResolution} from '../util/generalUtil';
-import {default as scanMRZ} from '../util/wrapper';
+import {sortFormatsByResolution} from './util/generalUtil';
+import {default as scanMRZ} from './util/wrapper';
 
 declare module 'diva-mobile-vision-camera-mrz-scanner' {
   export {MRZScanner};
