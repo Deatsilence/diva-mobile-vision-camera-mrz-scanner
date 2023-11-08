@@ -208,7 +208,7 @@ const MRZScanner: FC<PropsWithChildren<MRZScannerProps>> = ({
   return (
     <View testID="scanDocumentView" style={StyleSheet.absoluteFill}>
       <MRZCamera
-        onData={lines => {
+        onData={(lines: string[]) => {
           if (onData) {
             onData(lines);
           } else {

@@ -34,6 +34,7 @@ import {
   MRZFrame,
   scanMRZ,
   sortFormatsByResolution,
+  TextBlock,
 } from 'diva-mobile-vision-camera-mrz-scanner';
 
 const MRZCamera: FC<PropsWithChildren<MRZCameraProps>> = ({
@@ -132,7 +133,7 @@ const MRZCamera: FC<PropsWithChildren<MRZCameraProps>> = ({
         languages
       ) {
         let updatedOCRElements: BoundingFrame[] = [];
-        data.result.blocks.forEach(block => {
+        data.result.blocks.forEach((block: TextBlock) => {
           if (block.frame.width / screenWidth < 0.8) {
             setFeedbackText(`${languages[0]!.HOLD_STILL}`);
           } else {
@@ -142,7 +143,7 @@ const MRZCamera: FC<PropsWithChildren<MRZCameraProps>> = ({
         });
 
         let lines: string[] = [];
-        data.result.blocks.forEach(block => {
+        data.result.blocks.forEach((block: TextBlock) => {
           lines.push(block.text);
         });
         if (lines.length > 0 && isActive && onData) {
