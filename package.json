@@ -1,6 +1,6 @@
 {
   "name": "diva-mobile-vision-camera-mrz-scanner",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "VisionCamera Frame Processor Plugin to detect and read MRZ data from passports using MLKit Text Recognition.",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
